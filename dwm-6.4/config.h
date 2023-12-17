@@ -10,8 +10,8 @@ static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display 
 static const int showsystray        = 1;        /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const int user_bh            = 2;        /* 2 is the default spacing around the bar's font */
-static const char *fonts[]          = { "Liberation Mono:size=12" };
+static const int user_bh            = 3;        /* 2 is the default spacing around the bar's font */
+static const char *fonts[]          = { "monospace:size=12" };
 static const char dmenufont[]       = "monospace:size=12";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
@@ -38,7 +38,7 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	{ "firefox",  NULL,       NULL,       1 << 8,       1,           -1 },
 };
 
 /* layout(s) */
@@ -152,12 +152,12 @@ static const Key keys[] = {
        { 0,         XK_Print,	           spawn, SHCMD("/usr/local/bin/screenshot.sh") },
        { ShiftMask, XK_Print,	           spawn, SHCMD("/usr/local/bin/screenshotsel.sh") },
 
-       { MODKEY|ShiftMask, XK_r,  	   spawn, SHCMD("/usr/local/bin/ficheros.sh") },
+/*       { MODKEY|ShiftMask, XK_r,  	   spawn, SHCMD("/usr/local/bin/ficheros.sh") },
 
        { 0,	 XK_F1,	   		   spawn, SHCMD("/usr/local/bin/pulse.sh") },
 
        { MODKEY|ShiftMask,      XK_k,      spawn, SHCMD("/usr/local/bin/susp") },
-
+*/
        { ControlMask|ShiftMask, XK_Return, spawn, {.v = redshift} },
        { ControlMask,     	XK_Return, spawn, {.v = redshiftback} },
 
@@ -165,6 +165,8 @@ static const Key keys[] = {
        { Mod4Mask,      XK_space,          spawn, {.v =  keyboardes} },
 
        { MODKEY|ShiftMask,      XK_l,      spawn, {.v = xsecurelock} },
+
+
 };
 
 /* button definitions */
