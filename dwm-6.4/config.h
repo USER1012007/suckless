@@ -12,7 +12,7 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int user_bh            = 3;        /* 2 is the default spacing around the bar's font */
 static const char *fonts[]          = { "monospace:size=12" };
-static const char dmenufont[]       = "monospace:size=12";
+static const char dmenufont[]       = "monospace:size=13";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -82,6 +82,7 @@ static const char *upvol[]      = { "wpctl",   "set-volume", "-l",	"1.5",     "@
 static const char *downvol[]    = { "wpctl",   "set-volume", "@DEFAULT_AUDIO_SINK@",      "10%-",      NULL };
 static const char *mutevol[]    = { "wpctl",   "set-mute",   "@DEFAULT_AUDIO_SOURCE@",      "toggle",   NULL };
 */
+
 static const char *brighter[] = { "brightnessctl", "set", "10%+", NULL };
 static const char *dimmer[]   = { "brightnessctl", "set", "10%-", NULL };
 
@@ -131,40 +132,36 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
-	{ MODKEY|ShiftMask,             XK_e,      exitdwm,           {0} },
-        { MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {1} },
+	{ MODKEY|ShiftMask,             XK_e,      exitdwm,        {0} },
+    { MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {1} },
 
-       { 0, XF86XK_AudioMute,              spawn, {.v = mute_vol } },
-       { 0, XF86XK_AudioLowerVolume,       spawn, {.v = down_vol } },
-       { 0, XF86XK_AudioRaiseVolume,       spawn, {.v = up_vol } },
+    { 0, XF86XK_AudioMute,              spawn, {.v = mute_vol } },
+    { 0, XF86XK_AudioLowerVolume,       spawn, {.v = down_vol } },
+    { 0, XF86XK_AudioRaiseVolume,       spawn, {.v = up_vol   } },
 /*
-       { 0, XF86XK_AudioMute,              spawn, {.v = mutevol } },
-       { 0, XF86XK_AudioLowerVolume,       spawn, {.v = downvol } },
-       { 0, XF86XK_AudioRaiseVolume,       spawn, {.v = upvol } },
+    { 0, XF86XK_AudioMute,              spawn, {.v = mutevol } },
+    { 0, XF86XK_AudioLowerVolume,       spawn, {.v = downvol } },
+    { 0, XF86XK_AudioRaiseVolume,       spawn, {.v = upvol } },
 */
-       { 0, XF86XK_AudioPlay, 	           spawn, {.v = medplaypausecmd } },
-       { 0, XF86XK_AudioNext, 	           spawn, {.v = mednextcmd } },
-       { 0, XF86XK_AudioPrev,	           spawn, {.v = medprevcmd } },
+    { 0, XF86XK_AudioPlay, 	            spawn, {.v = medplaypausecmd } },
+    { 0, XF86XK_AudioNext, 	            spawn, {.v = mednextcmd } },
+    { 0, XF86XK_AudioPrev,	            spawn, {.v = medprevcmd } },
 
-       { 0, XF86XK_MonBrightnessDown,      spawn, {.v = dimmer } },
-       { 0, XF86XK_MonBrightnessUp,        spawn, {.v = brighter } },
+    { 0, XF86XK_MonBrightnessDown,      spawn, {.v = dimmer } },
+    { 0, XF86XK_MonBrightnessUp,        spawn, {.v = brighter } },
 
-       { 0,         XK_Print,	           spawn, SHCMD("/usr/local/bin/screenshot.sh") },
-       { ShiftMask, XK_Print,	           spawn, SHCMD("/usr/local/bin/screenshotsel.sh") },
-
-/*       { MODKEY|ShiftMask, XK_r,  	   spawn, SHCMD("/usr/local/bin/ficheros.sh") },
-
-       { 0,	 XK_F1,	   		   spawn, SHCMD("/usr/local/bin/pulse.sh") },
-
-       { MODKEY|ShiftMask,      XK_k,      spawn, SHCMD("/usr/local/bin/susp") },
+    { 0,         XK_Print,	            spawn, SHCMD("/usr/local/bin/screenshot.sh") },
+    { ShiftMask, XK_Print,	            spawn, SHCMD("/usr/local/bin/screenshotsel.sh") },
+/*  
+    { MODKEY|ShiftMask, XK_r,  	   spawn, SHCMD("/usr/local/bin/ficheros.sh") },
+    { 0,	 XK_F1,	   		   spawn, SHCMD("/usr/local/bin/pulse.sh") },
+    { MODKEY|ShiftMask,      XK_k,      spawn, SHCMD("/usr/local/bin/susp") },
 */
-       { ControlMask|ShiftMask, XK_Return, spawn, {.v = redshift} },
-       { ControlMask,     	XK_Return, spawn, {.v = redshiftback} },
-
-       { MODKEY,	XK_space, 	   spawn, {.v =  keyboarden} },
-       { Mod4Mask,      XK_space,          spawn, {.v =  keyboardes} },
-
-       { MODKEY|ShiftMask,      XK_l,      spawn, {.v = xsecurelock} },
+    { ControlMask|ShiftMask, XK_Return, spawn, {.v = redshift} },
+    { ControlMask,     	     XK_Return, spawn, {.v = redshiftback} },
+    { MODKEY,                XK_space,  spawn, {.v =  keyboarden} },
+    { Mod4Mask,              XK_space,  spawn, {.v =  keyboardes} },
+    { MODKEY|ShiftMask,      XK_l,      spawn, {.v = xsecurelock} },
 
 
 };
